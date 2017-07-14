@@ -13,8 +13,16 @@ public class Init {
     public static void main(String[] args) {
 
         appDriver app= new appDriver();
-        app.capabilities();
+        AndroidDriver<AndroidElement> driver = app.capabilities();
 
+        //xpath - id - classname - androidUIAutomator
+
+        /* x-path
+        *  //tagName[@attribute='value']
+        *  //className[@attribute='value']
+        * */
+        AndroidElement preference = driver.findElementByXPath("//android.widget.TextView[@text='Preference']");
+        preference.click();
     }
 
 
