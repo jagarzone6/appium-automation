@@ -23,6 +23,10 @@ public class Init {
         * */
         AndroidElement preference = driver.findElementByXPath("//android.widget.TextView[@text='Preference']");
         preference.click();
+
+        driver.closeApp();
+        driver.quit();
+
     }
 
 
