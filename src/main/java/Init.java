@@ -1,6 +1,9 @@
 import driver.appDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.concurrent.TimeUnit;
 
 
 /**
@@ -14,19 +17,29 @@ public class Init {
 
         appDriver app= new appDriver();
         AndroidDriver<AndroidElement> driver = app.capabilities();
-
-        //xpath - id - classname - androidUIAutomator
+        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);        //xpath - id - classname - androidUIAutomator
 
         /* x-path
         *  //tagName[@attribute='value']
         *  //className[@attribute='value']
         * */
-        AndroidElement preference = driver.findElementByXPath("//android.widget.TextView[@text='Preference']");
-        preference.click();
+        try {
 
-        driver.closeApp();
-        driver.quit();
 
+            AndroidElement preference = driver.findElementByXPath("//android.widget.TextView[@text='Preference']");
+            preference.click();
+            AndroidElement preferenceoption = driver.findElementByXPath("//android.widget.TextView[@text='3. Preference dependencies']");
+            preferenceoption.click();
+
+            driver.findElementById("android:id/checkbox").click();
+            driver.closeApp();
+            driver.quit();
+        }catch (Exception e) {
+            System.out.println("\n\rERROR:   ");
+            System.out.println(e);
+            driver.closeApp();
+            driver.quit();
+        }
     }
 
 
