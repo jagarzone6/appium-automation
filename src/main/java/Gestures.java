@@ -2,10 +2,14 @@ import driver.appDriver;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
+import org.junit.Assert;
+import org.junit.Test;
 
 import java.time.Duration;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
+
+import static org.junit.Assert.assertEquals;
 
 
 /**
@@ -13,8 +17,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class Gestures {
 
-
-
+    @Test
     public static void main(String[] args) {
 
         appDriver app= new appDriver();
@@ -30,10 +33,14 @@ public class Gestures {
 
             t.tap(driver.findElementByXPath("//android.widget.TextView[@text='Expandable Lists']")).perform();
             driver.findElementByXPath("//android.widget.TextView[@text='1. Custom Adapter']").click();
-            List<AndroidElement> options = driver.findElementsByClassName("android.widget.TextView");
-            t.longPress(options.get(1),app.getSecondDuration()).perform();
+            //List<AndroidElement> options = driver.findElementsByClassName("android.widget.TextView");
+            AndroidElement opt = driver.findElementByXPath("//android.widget.TextView[@text='People Names']");
+            opt.click();
+            t=new TouchAction(driver);
 
+            t.longPress(opt,app.getSecondDuration()).perform();
 
+            assertEquals(driver.findElementById("android:id/title").getText(),"Sample menu");
             driver.quit();
 
         }catch (Exception e) {

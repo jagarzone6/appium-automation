@@ -1,6 +1,7 @@
 import driver.appDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
+import org.junit.Test;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -12,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 public class AndroidUIAutomator {
 
 
-
+    @Test
     public static void main(String[] args) {
 
         appDriver app= new appDriver();
