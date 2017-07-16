@@ -19,7 +19,6 @@ public class Gestures {
 
         appDriver app= new appDriver();
         AndroidDriver<AndroidElement> driver = app.capabilities();
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);        //xpath - id - classname - androidUIAutomator
 
         try {
             AndroidElement Views = driver.findElementByXPath("//android.widget.TextView[@text='Views']");
@@ -27,7 +26,13 @@ public class Gestures {
            // List<AndroidElement> options =driver.findElementsById("android:id/text1");
 
             TouchAction t=new TouchAction(driver);
-            t.longPress(driver.findElementByXPath("//android.widget.TextView[@text='Expandable Lists']"),app.getSecondDuration()).perform();
+
+
+            t.tap(driver.findElementByXPath("//android.widget.TextView[@text='Expandable Lists']")).perform();
+            driver.findElementByXPath("//android.widget.TextView[@text='1. Custom Adapter']").click();
+            List<AndroidElement> options = driver.findElementsByClassName("android.widget.TextView");
+            t.longPress(options.get(1),app.getSecondDuration()).perform();
+
 
             driver.quit();
 
