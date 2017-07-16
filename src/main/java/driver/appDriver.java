@@ -9,12 +9,16 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by jgarzon on 13/07/17.
  */
 public class appDriver {
     private static URL appium_server;
+    public Duration secondDuration;
+
     static {
         try {
             appium_server = new URL("http://127.0.0.1:4723/wd/hub");
@@ -23,6 +27,13 @@ public class appDriver {
         }
     }
     private AndroidDriver<AndroidElement> driver;
+
+    public appDriver() {
+        this.secondDuration = Duration.ofSeconds(1);
+    }
+    public Duration getSecondDuration(){
+        return this.secondDuration;
+    }
 
     public AndroidDriver<AndroidElement> capabilities(){
 
