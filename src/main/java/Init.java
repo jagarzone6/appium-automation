@@ -3,6 +3,7 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 
@@ -32,12 +33,20 @@ public class Init {
             preferenceoption.click();
 
             driver.findElementById("android:id/checkbox").click();
-            driver.closeApp();
+
+            driver.findElementByXPath("(//android.widget.RelativeLayout)[2]").click();
+
+            driver.findElementById("android:id/edit").sendKeys("wifi-text");
+            List<AndroidElement> buttonsWifi = driver.findElementsByClassName("android.widget.Button");
+            buttonsWifi.get(1).click();
+
+            //driver.closeApp();
             driver.quit();
+
         }catch (Exception e) {
             System.out.println("\n\rERROR:   ");
             System.out.println(e);
-            driver.closeApp();
+            //driver.closeApp();
             driver.quit();
         }
     }
