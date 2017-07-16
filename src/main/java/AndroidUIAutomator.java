@@ -18,7 +18,6 @@ public class AndroidUIAutomator {
 
         appDriver app= new appDriver();
         AndroidDriver<AndroidElement> driver = app.capabilities();
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);        //xpath - id - classname - androidUIAutomator
 
         try {
             //driver.findElementByAndroidUIAutomator("attribute(value)");
