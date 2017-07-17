@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by jgarzon on 13/07/17.
  */
-public class Init {
+public class InitDemo {
 
 
     @Test
