@@ -1,0 +1,1 @@
+SUBSYSTEM=="usb", ATTR{idVendor}=="yourIDvendor", ATTR{idProduct}=="yourIDproduct", MODE="0666", GROUP="androiddev", SYMLINK+="android%n"
