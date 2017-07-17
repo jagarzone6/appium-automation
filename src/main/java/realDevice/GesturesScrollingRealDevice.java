@@ -1,5 +1,6 @@
-import driver.appDriver;
-import io.appium.java_client.TouchAction;
+package realDevice;
+
+import driver.appDriverRealDevice;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import org.junit.Test;
@@ -8,16 +9,15 @@ import org.junit.Test;
 /**
  * Created by jgarzon on 13/07/17.
  */
-public class GesturesScrolling {
+public class GesturesScrollingRealDevice {
 
     @Test
     public static void main(String[] args) {
 
-        appDriver app= new appDriver();
+        appDriverRealDevice app= new appDriverRealDevice();
         AndroidDriver<AndroidElement> driver = app.capabilities();
-
         try {
-            AndroidElement Views = driver.findElementByXPath("//android.widget.TextView[@text='Views']");
+            AndroidElement Views = driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"Views\"))");
             Views.click();
 
             AndroidElement lastElementScroll = driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"WebView\"))");

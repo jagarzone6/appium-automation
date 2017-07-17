@@ -1,32 +1,32 @@
-import driver.appDriver;
+package realDevice;
+
+import driver.appDriverRealDevice;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-
 
 /**
  * Created by jgarzon on 13/07/17.
  */
-public class GesturesSwiping {
+public class GesturesSwipingRealDevice {
 
     @Test
     public static void main(String[] args) {
 
-        appDriver app= new appDriver();
+        appDriverRealDevice app= new appDriverRealDevice();
         AndroidDriver<AndroidElement> driver = app.capabilities();
-
         try {
-            AndroidElement Views = driver.findElementByXPath("//android.widget.TextView[@text='Views']");
+            AndroidElement Views = driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"Views\"))");
             Views.click();
-           // List<AndroidElement> options =driver.findElementsById("android:id/text1");
 
             TouchAction t=new TouchAction(driver);
 
+            AndroidElement dateWidgets = driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"Date Widgets\"))");
 
-            t.tap(driver.findElementByXPath("//android.widget.TextView[@text='Date Widgets']")).perform();
+
+            t.tap(dateWidgets).perform();
             driver.findElementByXPath("//android.widget.TextView[@text='2. Inline']").click();
             //driver.findElementByAndroidUIAutomator("new UiSelector().descriptionContains(\"9\")").click();
             //OR SAME:

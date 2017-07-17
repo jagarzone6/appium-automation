@@ -1,3 +1,5 @@
+package emulator;
+
 import driver.appDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
