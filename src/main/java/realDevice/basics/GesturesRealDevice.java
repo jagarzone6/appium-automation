@@ -1,4 +1,4 @@
-package realDevice;
+package realDevice.basics;
 
 import driver.basics.appDriverRealDevice;
 import io.appium.java_client.TouchAction;
