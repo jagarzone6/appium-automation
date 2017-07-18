@@ -25,7 +25,7 @@ public class RaagaDemo {
         * */
         try {
 
-
+            driver.findElementById("com.raaga.android:id/skip_text").click();
             //driver.closeApp();
             driver.quit();
 
