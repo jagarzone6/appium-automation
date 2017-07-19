@@ -43,8 +43,8 @@ public class RaagaTappingOnOff {
 
             TouchAction t=new TouchAction(driver);
 
-            t.press(toggleButton.getCenter().getX(),toggleButton.getCenter().getY());
-
+            t.tap(toggleButton.getCenter().getX()+50,toggleButton.getCenter().getY()).perform();
+            t.tap(toggleButton.getCenter().getX()-50,toggleButton.getCenter().getY()).perform();
             //driver.closeApp();
             driver.quit();
 
