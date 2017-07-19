@@ -50,7 +50,7 @@ public class appDriverAndroidDevice {
         capabilities.setCapability(MobileCapabilityType.PLATFORM_NAME, Platform.ANDROID);
 
         driver = new AndroidDriver<>(appium_server,capabilities);
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);        //xpath - id - classname - androidUIAutomator
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);        //xpath - id - classname - androidUIAutomator
 
         return driver;
     }
