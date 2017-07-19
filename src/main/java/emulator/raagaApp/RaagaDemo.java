@@ -29,6 +29,11 @@ public class RaagaDemo {
 
             driver.findElementById("android:id/button2").click();
             driver.findElementById("com.raaga.android:id/skip_text").click();
+            driver.findElementById("com.raaga.android:id/landing_skip_to_raaga").click();
+            driver.findElementById("com.raaga.android:id/gotit_btn").click();
+
+            driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"World Music\"))").click();
+
             //driver.closeApp();
             driver.quit();
 
