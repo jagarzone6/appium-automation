@@ -3,7 +3,9 @@ package emulator.mobileBrowser;
 import driver.webBrowserDriverAndroidDevice;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
+import org.junit.Assert;
 import org.junit.Test;
+import org.openqa.selenium.JavascriptExecutor;
 
 
 /**
@@ -27,6 +29,13 @@ public class webBrowserExample {
             driver.findElementByXPath("//a[@href='#menu']").click();
             driver.findElementByCssSelector("a[title='Cricbuzz Home']").click();
             System.out.println(driver.getCurrentUrl());
+
+            //Scroll
+            JavascriptExecutor jse = (JavascriptExecutor) driver;
+            jse.executeScript("window.scrollBy(0,480)","");
+
+            Assert.assertTrue(driver.findElementByXPath("//*[@id=\"top\"]/div/div[10]/h4").getAttribute("class").contains("header"));
+
             //driver.closeApp();
             driver.quit();
 
