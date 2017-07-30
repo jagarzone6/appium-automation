@@ -1,4 +1,4 @@
-package emulator.mobileBrowser;
+package emulator.mobileBrowser.basics;
 
 import driver.webBrowserDriverAndroidDevice;
 import io.appium.java_client.android.AndroidDriver;

@@ -1,24 +1,23 @@
 package emulator.mobileBrowser;
 
-import driver.appDriverAndroidDevice;
 import driver.webBrowserDriverAndroidDevice;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
+import org.junit.Assert;
 import org.junit.Test;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.JavascriptExecutor;
 
 
 /**
  * Created by jgarzon on 13/07/17.
  */
-public class webBrowserDemo {
+public class webBrowserExample2 {
 
 
     @Test
     public static void main(String[] args) {
 
-        webBrowserDriverAndroidDevice app= new webBrowserDriverAndroidDevice("Chrome","http://facebook.com");
+        webBrowserDriverAndroidDevice app= new webBrowserDriverAndroidDevice("Chrome","http://cricbuzz.com");
         AndroidDriver<AndroidElement> driver = app.capabilities();
 
         /* x-path
@@ -27,9 +26,15 @@ public class webBrowserDemo {
         * */
         try {
 
-            driver.findElementByName("email").sendKeys("qwerty");
-            driver.findElementByName("pass").sendKeys("12345");
-            driver.findElementByName("login").click();
+            driver.findElementByXPath("//a[@href='#menu']").click();
+            driver.findElementByCssSelector("a[title='Cricbuzz Home']").click();
+            System.out.println(driver.getCurrentUrl());
+
+            //Scroll
+            JavascriptExecutor jse = (JavascriptExecutor) driver;
+            jse.executeScript("window.scrollBy(0,480)","");
+
+            Assert.assertTrue(driver.findElementByXPath("//*[@id=\"top\"]/div/div[10]/h4").getAttribute("class").contains("header"));
 
             //driver.closeApp();
             driver.quit();
