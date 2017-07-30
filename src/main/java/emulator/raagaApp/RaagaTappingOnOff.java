@@ -6,6 +6,8 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import org.junit.Test;
 
+import java.util.List;
+
 
 /**
  * Created by jgarzon on 13/07/17.
@@ -30,6 +32,7 @@ public class RaagaTappingOnOff {
             driver.findElementById("com.raaga.android:id/landing_skip_to_raaga").click();
             driver.findElementById("com.raaga.android:id/gotit_btn").click();
 
+            driver.swipe(0,0,200,200,1);
             driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"Kannada\"))").click();
 
             //Tapping on off from push notification
@@ -42,9 +45,11 @@ public class RaagaTappingOnOff {
             AndroidElement toggleButton = driver.findElementById("com.raaga.android:id/toggle_notifyrecommend");
 
             TouchAction t=new TouchAction(driver);
-
-            t.tap(toggleButton.getCenter().getX()+50,toggleButton.getCenter().getY()).perform();
-            t.tap(toggleButton.getCenter().getX()-50,toggleButton.getCenter().getY()).perform();
+            int x,y;
+            x=toggleButton.getCenter().getX();
+            y=toggleButton.getCenter().getY();
+            t.tap(x+20,y).perform();
+            t.tap(x-20,y).perform();
             //driver.closeApp();
             driver.quit();
 
