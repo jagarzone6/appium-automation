@@ -18,7 +18,7 @@ public class webBrowserDemo {
     @Test
     public static void main(String[] args) {
 
-        webBrowserDriverAndroidDevice app= new webBrowserDriverAndroidDevice("Chrome","http://google.com");
+        webBrowserDriverAndroidDevice app= new webBrowserDriverAndroidDevice("Chrome","http://facebook.com");
         AndroidDriver<AndroidElement> driver = app.capabilities();
 
         /* x-path
@@ -27,7 +27,9 @@ public class webBrowserDemo {
         * */
         try {
 
-            driver.findElementByName("q").sendKeys("test");
+            driver.findElementByName("email").sendKeys("qwerty");
+            driver.findElementByName("pass").sendKeys("12345");
+            driver.findElementByName("login").click();
 
             //driver.closeApp();
             driver.quit();
