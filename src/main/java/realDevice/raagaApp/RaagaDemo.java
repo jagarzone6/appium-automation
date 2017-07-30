@@ -5,6 +5,7 @@ import driver.appInvokeDriverAndroidDevice;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import org.junit.Test;
+import org.openqa.selenium.Dimension;
 
 
 /**
@@ -26,6 +27,9 @@ public class RaagaDemo {
         try {
 
             driver.findElementById("com.raaga.android:id/skip_text").click();
+
+            Dimension size= driver.manage().window().getSize();
+            System.out.println("screen size: h:"+ size.getHeight() + "w:" +size.getWidth());
             //driver.closeApp();
             driver.quit();
 
