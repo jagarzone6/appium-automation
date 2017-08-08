@@ -22,7 +22,7 @@ public class InitDemo {
             //driver.findElementById("com.example.testapp:id/urlField").sendKeys("http://google.com");
             //driver.findElementById("com.example.testapp:id/goButton").click();
 
-            AndroidElement Views = driver.findElementByXPath("//android.widget.TextView[@text='Views']");
+            AndroidElement Views = driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"Views\"))");
             Views.click();
 
             AndroidElement webView = driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"WebView\"))");
