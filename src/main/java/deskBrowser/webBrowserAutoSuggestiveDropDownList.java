@@ -1,13 +1,13 @@
 package deskBrowser;
 
-import driver.webBrowserDriverAndroidDevice;
 import driver.webBrowserDriverDesktop;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.AndroidElement;
+import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * Created by jgarzon on 13/07/17.
  */
-public class webBrowserFrame {
+public class webBrowserAutoSuggestiveDropDownList {
 
 
     @Test
@@ -28,18 +28,14 @@ public class webBrowserFrame {
         *  //className[@attribute='value']
         * */
         try {
+            driver.findElement(By.id("m_rtxtEmail1")).sendKeys("jagar");
+            WebDriverWait dw = new WebDriverWait(driver,1);
+            dw.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"m_frmRegister\"]/div[1]/ul")));
+            String emailSuggested = driver.findElement(By.xpath("//*[@id=\"m_frmRegister\"]/div[1]/ul/li[3]")).getText();
+            driver.findElement(By.xpath("//*[@id=\"m_frmRegister\"]/div[1]/ul/li[3]")).click();
+            String EmailField = driver.findElement(By.id("m_rtxtEmail1")).getAttribute("value");
+            Assert.assertEquals(EmailField.toString(),emailSuggested.toString());
 
-            //SWITCH TO FRAME
-            List<WebElement> frames = driver.findElements(By.tagName("iframe"));
-            int framecount = frames.size();
-            System.out.println("# of frames: "+framecount);
-
-            for(WebElement frame: frames){
-                driver.switchTo().frame(frame);
-                driver.findElement(By.xpath("")).click();
-            }
-
-            driver.switchTo().defaultContent();
             //driver.closeApp();
             driver.quit();
 
