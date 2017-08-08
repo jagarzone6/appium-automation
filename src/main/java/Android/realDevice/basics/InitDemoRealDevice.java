@@ -1,4 +1,4 @@
-package realDevice.basics;
+package Android.realDevice.basics;
 
 import driver.basics.appDriverRealDevice;
 import io.appium.java_client.android.AndroidDriver;

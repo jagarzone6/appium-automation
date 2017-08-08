@@ -1,4 +1,4 @@
-package emulator.mobileBrowser;
+package Android.emulator.mobileBrowser.basics;
 
 import driver.webBrowserDriverAndroidDevice;
 import io.appium.java_client.android.AndroidDriver;
@@ -6,21 +6,18 @@ import io.appium.java_client.android.AndroidElement;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
-
-import java.util.List;
 
 
 /**
  * Created by jgarzon on 13/07/17.
  */
-public class webBrowserFrame {
+public class webBrowserExample {
 
 
     @Test
     public static void main(String[] args) {
 
-        webBrowserDriverAndroidDevice app= new webBrowserDriverAndroidDevice("Chrome","https://fantasycricket.dream11.com/in/");
+        webBrowserDriverAndroidDevice app= new webBrowserDriverAndroidDevice("Chrome","http://cricbuzz.com");
         AndroidDriver<AndroidElement> driver = app.capabilities();
 
         /* x-path
@@ -29,14 +26,15 @@ public class webBrowserFrame {
         * */
         try {
 
-            //SWITCH TO FRAME
-            List<AndroidElement> frames = driver.findElementsByTagName("iframe");
-            int framecount = frames.size();
-            System.out.println("# of frames: "+framecount);
+            driver.findElementByXPath("//a[@href='#menu']").click();
+            driver.findElementByCssSelector("a[title='Cricbuzz Home']").click();
+            System.out.println(driver.getCurrentUrl());
 
-            for(AndroidElement frame: frames){
-                driver.switchTo().frame(frame);
-            }
+            //Scroll
+            JavascriptExecutor jse = (JavascriptExecutor) driver;
+            jse.executeScript("window.scrollBy(0,480)","");
+
+            Assert.assertTrue(driver.findElementByXPath("//*[@id=\"top\"]/div/div[10]/h4").getAttribute("class").contains("header"));
 
             //driver.closeApp();
             driver.quit();

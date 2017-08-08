@@ -1,6 +1,6 @@
-package realDevice.basics;
+package Android.emulator.basics;
 
-import driver.basics.appDriverRealDevice;
+import driver.basics.appDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 import org.junit.Test;
@@ -9,15 +9,16 @@ import org.junit.Test;
 /**
  * Created by jgarzon on 13/07/17.
  */
-public class GesturesScrollingRealDevice {
+public class GesturesScrolling {
 
     @Test
     public static void main(String[] args) {
 
-        appDriverRealDevice app= new appDriverRealDevice();
+        appDriver app= new appDriver();
         AndroidDriver<AndroidElement> driver = app.capabilities();
+
         try {
-            AndroidElement Views = driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"Views\"))");
+            AndroidElement Views = driver.findElementByXPath("//android.widget.TextView[@text='Views']");
             Views.click();
 
             AndroidElement lastElementScroll = driver.findElementByAndroidUIAutomator("new UiScrollable(new UiSelector()).scrollIntoView(text(\"WebView\"))");

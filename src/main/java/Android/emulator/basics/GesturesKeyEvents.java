@@ -1,16 +1,16 @@
-package emulator.basics;
+package Android.emulator.basics;
 
 import driver.basics.appDriver;
-import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
+import io.appium.java_client.android.AndroidKeyCode;
 import org.junit.Test;
 
 
 /**
  * Created by jgarzon on 13/07/17.
  */
-public class GesturesDragAndDrop {
+public class GesturesKeyEvents {
 
     @Test
     public static void main(String[] args) {
@@ -21,10 +21,24 @@ public class GesturesDragAndDrop {
         try {
             AndroidElement Views = driver.findElementByXPath("//android.widget.TextView[@text='Views']");
             Views.click();
-            driver.findElementByXPath("//android.widget.TextView[@text='Drag and Drop']").click();
 
-            TouchAction t=new TouchAction(driver);
-            t.longPress(driver.findElementById("io.appium.android.apis:id/drag_dot_1")).moveTo(driver.findElementById("io.appium.android.apis:id/drag_dot_3")).release().perform();
+            //Check driver activity:
+            System.out.println(driver.currentActivity());
+            //Check view (native, Hybrid or Web-view )
+            System.out.println(driver.getContext());
+            //Check Orientation
+            System.out.println(driver.getOrientation());
+            //Check Locked
+            System.out.println(driver.isLocked());
+            //HideKeyBoard
+            //driver.hideKeyboard();
+            //Press Key-code
+            driver.pressKeyCode(AndroidKeyCode.BACK);
+
+
+
+
+
 
 
             driver.quit();

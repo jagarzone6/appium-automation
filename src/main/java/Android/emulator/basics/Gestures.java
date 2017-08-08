@@ -1,4 +1,4 @@
-package emulator.basics;
+package Android.emulator.basics;
 
 import driver.basics.appDriver;
 import io.appium.java_client.TouchAction;
