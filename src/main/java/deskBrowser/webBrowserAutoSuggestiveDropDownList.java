@@ -35,6 +35,8 @@ public class webBrowserAutoSuggestiveDropDownList {
             driver.findElement(By.xpath("//*[@id=\"m_frmRegister\"]/div[1]/ul/li[3]")).click();
             String EmailField = driver.findElement(By.id("m_rtxtEmail1")).getAttribute("value");
             Assert.assertEquals(EmailField.toString(),emailSuggested.toString());
+            //Assert.assertTrue("Password Tip is shown",driver.findElement(By.className("passwordTippasswordTip")).isDisplayed());
+            Assert.assertTrue("Password Tip is shown",driver.findElement(By.xpath("//*[@id=\"m_frmRegister\"]/div[2]/p")).isDisplayed());
 
             //driver.closeApp();
             driver.quit();
