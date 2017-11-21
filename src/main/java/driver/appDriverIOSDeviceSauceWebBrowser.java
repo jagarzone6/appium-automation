@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by jgarzon on 13/07/17.
  */
-public class appDriverIOSDeviceSauce {
+public class appDriverIOSDeviceSauceWebBrowser {
     private static URL sauce_lab_server;
     public Duration secondDuration;
     public String apkResource;
@@ -28,7 +28,7 @@ public class appDriverIOSDeviceSauce {
     }
     private IOSDriver<IOSElement> driver;
 
-    public appDriverIOSDeviceSauce(String apkFile) {
+    public appDriverIOSDeviceSauceWebBrowser(String apkFile) {
         this.secondDuration = Duration.ofSeconds(1);
         this.apkResource = apkFile;
     }
